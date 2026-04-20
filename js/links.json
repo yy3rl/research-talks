@@ -28,10 +28,112 @@
         },
         {
             "note": "kelsey pugh site",
-            "startC": 1711,
-            "endC": 1721,
+            "startC": 1698,
+            "endC": 1708,
             "link": "https://www.researchgate.net/profile/Kelsey-Pugh"
-        }
+        },
+        {
+            "note": "anna stielau site",
+            "startC": 2648,
+            "endC": 2659,
+            "link": "https://www.ocadu.ca/academics/explore-faculty/astielau"
+        },
+        {
+            "note": "ocad",
+            "startC": 257,
+            "endC": 278,
+            "place": "https://maps.app.goo.gl/ae3sT8gcQtbCUeWn9"
+        },
+        {
+            "note": "art mur montreal",
+            "startC": 1009,
+            "endC": 1024,
+            "link": "https://maps.app.goo.gl/tTvCEYdaKfezX7TQA"
+        },
+        {
+            "note": "eastern edge gallery newfoundland",
+            "startC": 1027,
+            "endC": 1059,
+            "link": "https://maps.app.goo.gl/6im7aMK1ddzBU6f2A"
+        },
+        {
+            "note": "queer arts festival vancouver",
+            "startC": 1066,
+            "endC": 1094,
+            "link": "https://queerartsfestival.com/"
+        },
+        {
+            "note": "satellite art show",
+            "startC": 1104,
+            "endC": 1121,
+            "link": "https://www.satellite-show.com/"
+        },
+        {
+            "note": "indigineous art center",
+            "startC": 1152,
+            "endC": 1172,
+            "link": "https://www.rcaanc-cirnac.gc.ca/eng/1100100012794/1535557712411#sec1"
+        },
+        {
+            "note": "joan flash artrist book collection",
+            "startC": 1175,
+            "endC": 1208,
+            "link": "https://www.saic.edu/libraries-special-collections/john-m-flaxman-library/special-collections/joan-flasch-artists-book-collection"
+        },
+        {
+            "note": "vtape",
+            "startC": 1211,
+            "endC": 1215,
+            "link": "https://vtape.org/"
+        },
+        {
+            "note": "seneca college",
+            "startC": 1218,
+            "endC": 1231,
+            "link": "https://www.senecapolytechnic.ca/about/art-collection.html"
+        },
+        {
+            "note": "archives of american art",
+            "startC": 1242,
+            "endC": 1265,
+            "link": "https://maps.app.goo.gl/Me2F5mfyvGVoCfFc7"
+        },
+        {
+            "note": "aw essex",
+            "startC": 1654,
+            "endC": 1670,
+            "link": "https://maps.app.goo.gl/rryraAX58L7qxoqP9"
+        },
+        {
+            "note": "ancestor",
+            "startC": 1963,
+            "endC": 2028,
+            "link": "https://www.google.com/search?q=what+is+the+nature+of+the+last+common+ancestor+of+apes+and+humans&udm=50"
+        },
+        {
+            "note": "cuny",
+            "startC": 1963,
+            "endC": 2028,
+            "link": "https://maps.app.goo.gl/eUacVE2Qa8HzcVU78"
+        },
+        {
+            "note": "ocadu anna",
+            "startC": 1963,
+            "endC": 2028,
+            "link": "https://maps.app.goo.gl/ae3sT8gcQtbCUeWn9"
+        },
+        {
+            "note": "nyu",
+            "startC": 2778,
+            "endC": 2780,
+            "link": "https://maps.app.goo.gl/eyNNnD9DCgDtmZUC6"
+        },
+        {
+            "note": "caltech",
+            "startC": 2920,
+            "endC": 2926,
+            "link": "https://maps.app.goo.gl/8wxDY1tfcF3C7J7N6"
+        } 
     ],
     "expand": [
         {
@@ -51,14 +153,54 @@
             "startC": 539,
             "endC": 553,
             "photos": ["./assets/I_Want_Pink_Drip.png"]
-        }
-    ],
-    "embed": [
+        },
         {
-            "note": "ocad",
-            "startC": 258,
-            "endC": 279,
-            "place": "OCAD+University"
+            "note": "xwat",
+            "startC": 1276,
+            "endC": 1300,
+            "photos": ["./assets/bigdoll.jpg"]
+        },
+        {
+            "note": "comparative anatomy",
+            "startC": 1850,
+            "endC": 1868,
+            "photos": ["./assets/Homology_vertebrates-en.svg.png", "./assets/Belon_Oyseaux.jpg"]
+        },
+        {
+            "note": "phylogenetics",
+            "startC": 1871,
+            "endC": 1883,
+            "photos": ["./assets/phylogenetics.png"]
+        },
+        {
+            "note": "morpometrtrics",
+            "startC": 1890,
+            "endC": 1915,
+            "photos": ["./assets/morphometrics.png"]
+        },
+        {
+            "note": "ancient faces",
+            "startC": 2189,
+            "endC": 2208,
+            "photos": ["./assets/image089.jpg"]
+        },
+        {
+            "note": "vritual reconstruction",
+            "startC": 2453,
+            "endC": 2466,
+            "photos": ["./assets/082719_bb_skull_feat.jpg"]
+        },
+        {
+            "note": "piero",
+            "startC": 2527,
+            "endC": 2541,
+            "photos": ["./assets/piero.jpg"]
+        },
+        {
+            "note": "south africa images",
+            "startC": 3443,
+            "endC": 3448,
+            "photos": ["./assets/southafrica_1.jpg", "./assets/southafrica_2.jpg", "./assets/southafrica_3.jpg"]
         }
     ]
 }

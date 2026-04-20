@@ -9,23 +9,15 @@ let caretPos = 0;
 let preferredX = null;
 let openExpands = [];
 
-function isSkippable(char) {
+function isSkippable(char) { // check if character is skippable
   return char === " " || char === "·";
 }
 
-function foldChar(char) {
+function foldChar(char) { // normalize characters with extra bits
   return (char ?? "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
-}
-
-function charsMatch(a, b) {
-  return foldChar(a) === foldChar(b);
-}
-
-function resetPreferredX() {
-  preferredX = null;
 }
 
 function getCurrentTargetIndex() {
@@ -63,7 +55,7 @@ function getTargetTokensInRange(item) {
   );
 }
 
-function isRangeActivated(item) {
+function isRangeActivated(item) { // check if range is activated
   const rangeTokens = getTargetTokensInRange(item);
 
   if (rangeTokens.length === 0) {
@@ -84,7 +76,7 @@ function isSameRenderedLine(nodeA, nodeB, tolerance = 2) {
   ) <= tolerance;
 }
 
-function toggleOpenExpandOnSameLine(clickedNode, newExpandEntry) {
+function toggleOpenExpandOnSameLine(clickedNode, newExpandEntry) { // expand images on same line and close prev. expanded
   let foundSameEntry = false;
 
   openExpands = openExpands.filter((entry) => {
@@ -111,7 +103,7 @@ function toggleOpenExpandOnSameLine(clickedNode, newExpandEntry) {
   }
 }
 
-function makeSpan(token, index, currentIndex) {
+function makeSpan(token, index, currentIndex) { // create character span
   let el = document.createElement("span");
   el.textContent = token.char;
   el.dataset.index = String(index);
@@ -165,7 +157,7 @@ function makeSpan(token, index, currentIndex) {
   return el;
 }
 
-function insertExpandPanels() {
+function insertExpandPanels() { // create expansion panel
   if (openExpands.length === 0) return;
 
   const entries = [...openExpands].sort(
@@ -198,12 +190,6 @@ function insertExpandPanels() {
     panel.className = "expand-panel";
     panel.dataset.anchorOriginalIndex = String(entry.anchorOriginalIndex);
 
-    if (entry.note) {
-      const title = document.createElement("div");
-      title.className = "expand-title";
-      panel.appendChild(title);
-    }
-
     const gallery = document.createElement("div");
     gallery.className = "expand-gallery";
 
@@ -220,7 +206,7 @@ function insertExpandPanels() {
   }
 }
 
-function renderText() {
+function renderText() { // render text
   textEl.innerHTML = "";
   const currentIndex = getCurrentTargetIndex();
 
@@ -231,12 +217,12 @@ function renderText() {
   insertExpandPanels();
 }
 
-function typeCharacter(char) {
+function typeCharacter(char) { // when user types character, check if correct and insert into the token array
   const currentIndex = getCurrentTargetIndex();
   if (currentIndex === -1) return;
 
   const currentToken = tokens[currentIndex];
-  resetPreferredX();
+  preferredX = null;
 
   if (char === " " && isSkippable(currentToken.char)) {
     let i = currentIndex;
@@ -255,7 +241,7 @@ function typeCharacter(char) {
     return;
   }
 
-  if (charsMatch(char, currentToken.char)) {
+  if (foldChar(char) == foldChar(currentToken.char)) {
     currentToken.state = "correct";
     caretPos = currentIndex + 1;
   } else {
@@ -269,10 +255,10 @@ function typeCharacter(char) {
   renderText();
 }
 
-function backspace() {
+function backspace() { // backspace function, removes typed characters from token list and skips middot
   if (caretPos === 0) return;
 
-  resetPreferredX();
+  preferredX = null;
 
   let i = caretPos - 1;
 
@@ -308,10 +294,10 @@ function backspace() {
   renderText();
 }
 
-function del() {
+function del() { // delete function
   if (caretPos >= tokens.length) return;
 
-  resetPreferredX();
+  preferredX = null;
 
   const next = tokens[caretPos];
 
@@ -324,10 +310,11 @@ function del() {
   renderText();
 }
 
+// left/right/up/down arrow keys
 function moveCaretLeft() {
   if (caretPos === 0) return;
 
-  resetPreferredX();
+  preferredX = null;
 
   let newPos = caretPos - 1;
 
@@ -345,9 +332,9 @@ function moveCaretLeft() {
 }
 
 function moveCaretRight() {
-  if (caretPos >= tokens.length) return;
+  if (caretPos >= tokens.length-1) return;
 
-  resetPreferredX();
+  preferredX = null;
 
   let newPos = caretPos + 1;
 
@@ -364,7 +351,7 @@ function moveCaretRight() {
   renderText();
 }
 
-function findCaretTargetVertically(direction) {
+function findCaretTargetVertically(direction) { // finds vertical target
   const nodes = [...textEl.querySelectorAll("[data-index]")];
   if (!nodes.length) return caretPos;
 
@@ -428,7 +415,7 @@ function moveCaretDown() {
   renderText();
 }
 
-async function loadData() {
+async function loadData() { // load information from text file and links json
   try {
     const [textResponse, jsonResponse] = await Promise.all([
       fetch("./js/text.txt"),
@@ -458,6 +445,13 @@ async function loadData() {
     }));
 
     caretPos = 0;
+    /* TESTING FUNCTION makes everythign written
+    for (const token of tokens) {
+      token.state = "correct";
+    }
+
+    caretPos = tokens.length;*/
+
     preferredX = null;
     openExpands = [];
     renderText();
@@ -467,7 +461,7 @@ async function loadData() {
   }
 }
 
-inputEl.addEventListener("keydown", (event) => {
+inputEl.addEventListener("keydown", (event) => { // listen for key downs
   if (event.ctrlKey || event.metaKey || event.altKey) return;
 
   switch (event.key) {
@@ -503,15 +497,15 @@ inputEl.addEventListener("keydown", (event) => {
 
     case "Home":
       event.preventDefault();
-      resetPreferredX();
+      preferredX = null;
       caretPos = 0;
       renderText();
       break;
 
     case "End":
       event.preventDefault();
-      resetPreferredX();
-      caretPos = tokens.length;
+      preferredX = null;
+      caretPos = tokens.length - 1;
       renderText();
       break;
 
@@ -524,7 +518,7 @@ inputEl.addEventListener("keydown", (event) => {
   }
 });
 
-textEl.addEventListener("click", (event) => {
+textEl.addEventListener("click", (event) => { // if clicked, check if it needs to expand, jump to, or hyperlink
   if (event.target.closest(".expand-panel")) {
     return;
   }
@@ -544,11 +538,11 @@ textEl.addEventListener("click", (event) => {
       const clickedOriginalIndex = Number(node.dataset.originalIndex);
 
       toggleOpenExpandOnSameLine(node, {
-        ...item,
-        anchorOriginalIndex: clickedOriginalIndex
-      });
+      ...item,
+      anchorOriginalIndex: clickedOriginalIndex
+    });
 
-      resetPreferredX();
+      preferredX = null;
       renderText();
       return;
     }
@@ -557,7 +551,7 @@ textEl.addEventListener("click", (event) => {
   if (node.dataset.jumpTo !== undefined) {
     event.preventDefault();
     caretPos = getCaretPosFromOriginalIndex(Number(node.dataset.jumpTo));
-    resetPreferredX();
+    preferredX = null;
     renderText();
     return;
   }
@@ -571,11 +565,11 @@ textEl.addEventListener("click", (event) => {
   const midpoint = rect.left + rect.width / 2;
 
   caretPos = event.clientX < midpoint ? index : index + 1;
-  resetPreferredX();
+  preferredX = null;
   renderText();
 });
 
-document.body.addEventListener("click", () => {
+document.body.addEventListener("click", () => { // focus input element so user can type whenever the window is clicked
   inputEl.focus();
 });
 

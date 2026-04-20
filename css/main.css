@@ -37,7 +37,7 @@
 :root {
   --page-padding: clamp(20px, 4vw, 48px);
   --font-size: clamp(1.2rem, 1.65vw, 1.7rem);
-  --line-height: 1.682;
+  --line-height: 1.681;
   --text-color: #111;
   --untyped-color: #c7c7c7;
   --error-color: #c0392b;
