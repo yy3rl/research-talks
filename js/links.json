@@ -1,0 +1,64 @@
+{
+    "jumps": [
+        {
+            "text": "Vanessa Dion Fletcher",
+            "startC": 16,
+            "endC": 36,
+            "jumpTo": 293
+        },
+        {
+            "text": "Kelsey Pugh",
+            "startC": 39,
+            "endC": 49,
+            "jumpTo": 1711
+        },
+        {
+            "text": "Anna Stielau",
+            "startC": 53,
+            "endC": 64,
+            "jumpTo": 2661
+        }
+    ],
+    "hyperlinks": [
+        {
+            "note": "vdf site",
+            "startC": 293,
+            "endC": 313,
+            "link": "https://www.dionfletcher.com/"
+        },
+        {
+            "note": "kelsey pugh site",
+            "startC": 1711,
+            "endC": 1721,
+            "link": "https://www.researchgate.net/profile/Kelsey-Pugh"
+        }
+    ],
+    "expand": [
+        {
+            "note": "porcupine quills",
+            "startC": 503,
+            "endC": 518,
+            "photos": ["./assets/Cicadas_2023.jpg", "./assets/Brown+on+Brown.jpg", "./assets/01_Tall+Loops.jpg"]
+        },
+        {
+            "note": "wampum belts",
+            "startC": 521,
+            "endC": 532,
+            "photos": ["./assets/wampum.jpg"]
+        },
+        {
+            "note": "blood",
+            "startC": 539,
+            "endC": 553,
+            "photos": ["./assets/I_Want_Pink_Drip.png"]
+        }
+    ],
+    "embed": [
+        {
+            "note": "ocad",
+            "startC": 258,
+            "endC": 279,
+            "place": "OCAD+University"
+        }
+    ]
+}

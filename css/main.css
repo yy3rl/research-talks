@@ -1,11 +1,48 @@
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/HelveticaNeue-Bold.woff2') format('woff2'),
+        url('../fonts/HelveticaNeue-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/HelveticaNeue-Italic.woff2') format('woff2'),
+        url('../fonts/HelveticaNeue-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/HelveticaNeue.woff2') format('woff2'),
+        url('../fonts/HelveticaNeue.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+        url('../fonts/HelveticaNeue-Medium.woff') format('woff');
+    font-weight: medium;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
   --page-padding: clamp(20px, 4vw, 48px);
-  --font-size: clamp(1rem, 1.35vw, 1.35rem);
-  --line-height: 1.7;
+  --font-size: clamp(1.2rem, 1.65vw, 1.7rem);
+  --line-height: 1.682;
   --text-color: #111;
-  --untyped-color: #9a9a9a;
+  --untyped-color: #c7c7c7;
   --error-color: #c0392b;
   --error-bg: rgba(192, 57, 43, 0.12);
+  --bg-color: #ffffff;
 }
 
 * {
@@ -37,23 +74,18 @@ main {
 .page-text {
   width: 100%;
   margin: 0;
-  min-height: 100vh;
   padding: 0;
   text-transform: uppercase;
   text-align: justify;
+  text-align-last: justify;
   text-justify: inter-word;
   line-height: var(--line-height);
   font-size: var(--font-size);
-  letter-spacing: 0.03em;
+  font-family: 'Helvetica Neue';
+  font-weight: medium;
+  letter-spacing: 0.07em;
   hyphens: auto;
   overflow-wrap: anywhere;
-}
-
-#text::after,
-.page-text::after {
-  content: "";
-  display: inline-block;
-  width: 100%;
 }
 
 #text span {
@@ -74,7 +106,38 @@ main {
 #text span.current,
 .current {
   background: var(--text-color);
-  color: var(--bg-color);
+  color: white;
+}
+
+#text a.hyperlink-link,
+#text span.expand-link,
+#text span.jump-link {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+#text a.hyperlink-link {
+  color: blue;
+}
+
+.expand-panel {
+  display: block;
+  width: 100%;
+  margin: 0.75rem 0 1rem;
+  padding-top: 0.75rem;
+}
+
+.expand-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.expand-gallery img {
+  display: block;
+  max-width: min(320px, 100%);
+  height: auto;
 }
 
 #typingInput {
